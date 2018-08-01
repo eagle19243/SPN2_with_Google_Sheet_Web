@@ -1,0 +1,21 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+django = "*"
+gunicorn = "*"
+django-heroku = "*"
+oauth2client = "*"
+google-api-python-client = "*"
+
+[requires]
+
+python_version = "3.6"

@@ -1,0 +1,1 @@
+web: gunicorn spn2_google_sheet_web.wsgi --log-file -
