@@ -1,8 +1,14 @@
 .container {
-    margin-top: 150px;
+    margin-top: 200px;
     width: 75%;
     text-align: center;
 }
 #btn_archive {
     margin-top: 20px;
+}
+.status {
+    display: none;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 50px;
 }
