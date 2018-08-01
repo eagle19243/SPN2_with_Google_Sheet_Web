@@ -1,1 +1,1 @@
-web: gunicorn spn2_google_sheet_web.wsgi --log-file -
+web: python manage.py runserver --noauth_local_webserver 0.0.0.0:5000
