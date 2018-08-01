@@ -1,5 +1,4 @@
 .idea
-*.json
 db.sqlite3
 .env
 *.pyc
