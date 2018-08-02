@@ -54,7 +54,7 @@ def get_auth_uri():
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      'http://127.0.0.1:8000/')
+                                      'https://spn2-with-google-sheet.herokuapp.com/')
     auth_uri = flow.step1_get_authorize_url()
     return auth_uri
 
@@ -66,7 +66,7 @@ def process_doc(spreadsheet_id, auth_code):
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      'http://127.0.0.1:8000/')
+                                      'https://spn2-with-google-sheet.herokuapp.com/')
     creds = flow.step2_exchange(auth_code)
     service = build('sheets', 'v4', http=creds.authorize(Http()))
 
