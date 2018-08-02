@@ -44,7 +44,11 @@ def get_credentials(scopes):
     store = oauth_file.Storage('token.json')
     # creds = store.get()
     # if not creds or creds.invalid:
-    flow = client.flow_from_clientsecrets('credentials.json', scopes)
+    flow = client.OAuth2WebServerFlow('993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com',
+                                      '3JrJxLpmpkN3WezmwYKF4AhL',
+                                      scopes,
+                                      'http://127.0.0.1:8000/')
+    auth_uri = flow.step1_get_authorize_url()
     flags = tools.argparser.parse_args([])
     creds = tools.run_flow(flow, store, flags)
 

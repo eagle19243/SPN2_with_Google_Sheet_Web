@@ -19,5 +19,6 @@ from home import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index)
+    url(r'^$', views.index),
+    url(r'^auth_return/', views.auth_return)
 ]
