@@ -3,7 +3,7 @@ import re
 import time
 import requests
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from apiclient.discovery import build
 from httplib2 import Http
@@ -14,6 +14,8 @@ LOGIN_URL = 'https://archive.org/account/login.php'
 AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 USERNAME = 'wbmloader@gmail.com'
 PASSWORD = 'wbm*loader'
+CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
+CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
 HEADERS = {
     'User-Agent': 'Wayback_Machine_SPN2_Google_Spreadsheet',
@@ -28,10 +30,18 @@ def index(request):
         if not spreadsheet_id:
             return JsonResponse({'success': False, 'message': 'Invalid Spreadsheet URL'})
         else:
-            process_doc(spreadsheet_id)
+            auth_code = request.COOKIES.get('auth_code')
+            process_doc(spreadsheet_id, auth_code)
             return JsonResponse({'success': True})
+
     else:
-        return render(request, "index.html")
+        if 'code' in request.GET:
+            code = request.GET['code']
+            response = render(request, 'index.html', {'message': 'Processing...'})
+            response.set_cookie('auth_code', code)
+            return response
+        else:
+            return HttpResponseRedirect(get_auth_uri())
 
 def get_spreadsheet_id_from_url(url):
     match = re.match(r'https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\/edit', url)
@@ -40,26 +50,24 @@ def get_spreadsheet_id_from_url(url):
     else:
         return None
 
-def get_credentials(scopes):
-    store = oauth_file.Storage('token.json')
-    # creds = store.get()
-    # if not creds or creds.invalid:
-    flow = client.OAuth2WebServerFlow('993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com',
-                                      '3JrJxLpmpkN3WezmwYKF4AhL',
-                                      scopes,
+def get_auth_uri():
+    flow = client.OAuth2WebServerFlow(CLIENT_ID,
+                                      CLIENT_SECRET,
+                                      SCOPES,
                                       'http://127.0.0.1:8000/')
     auth_uri = flow.step1_get_authorize_url()
-    flags = tools.argparser.parse_args([])
-    creds = tools.run_flow(flow, store, flags)
+    return auth_uri
 
-    return creds
-
-def process_doc(spreadsheet_id):
+def process_doc(spreadsheet_id, auth_code):
     session = requests.session()
     session.get(LOGIN_URL)
     session.post(url=LOGIN_URL, data={'username': USERNAME, 'password': PASSWORD, 'action': 'login'})
 
-    creds = get_credentials(SCOPES)
+    flow = client.OAuth2WebServerFlow(CLIENT_ID,
+                                      CLIENT_SECRET,
+                                      SCOPES,
+                                      'http://127.0.0.1:8000/')
+    creds = flow.step2_exchange(auth_code)
     service = build('sheets', 'v4', http=creds.authorize(Http()))
 
     spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()

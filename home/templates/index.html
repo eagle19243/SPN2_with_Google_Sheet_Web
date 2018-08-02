@@ -57,9 +57,9 @@
                 method: "POST",
                 data: {"google_sheet_url" : $("#google_sheet_url").val()},
                 success: function(res){
-                    $('.spinner-container').hide();
+                    console.log(res);
                     if (res.success) {
-                        $('.status').html('Success');
+                        $('.status').html('Done');
                     } else {
                         $('.status').html('Failed: ' + res.message);
                     }
