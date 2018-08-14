@@ -1,10 +1,25 @@
 .container {
-    margin-top: 200px;
-    width: 75%;
+    margin-top: 100px;
+    width: 50%;
     text-align: center;
 }
-#btn_archive {
+#access_key {
     margin-top: 20px;
+}
+#secret_key {
+    margin-top: 20px;
+}
+#google_sheet_url {
+    margin-top: 20px;
+}
+#btn_archive {
+    margin-top: 50px;
+}
+#btn_archive_urls_from_sheet {
+    margin-top: 100px;
+}
+.description {
+    font-size: 16px;
 }
 .status {
     display: none;

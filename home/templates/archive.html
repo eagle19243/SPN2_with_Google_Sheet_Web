@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SPN2 Google Sheet - Web</title>
+        <link rel="stylesheet" href='{% static "assets/global/css/bootstrap.min.css" %}'>
+        <link rel="stylesheet" href='{% static "assets/global/css/bootstrap-extend.min.css" %}'>
+        <link rel="stylesheet" href='{% static "css/style.css" %}'>
+        <script src='{% static "assets/global/vendor/jquery/jquery.min.js" %}'></script>
+        <script src='{% static "assets/global/vendor/bootstrap/bootstrap.min.js" %}'></script>
+    </head>
+    <body>
+        <div class="container">
+            <p class="description">
+                You need to be authorized with
+                <code>S3 Access Key</code>
+                and
+                <code>S3 Secret Key</code>
+                to archive URLs from Google Spreadsheet.
+                You can get the keys
+                <a href="https://archive.org/account/s3.php" target="_blank">here</a>
+            </p>
+            <p class="status"></p>
+            <input type="text" class="form-control" id="access_key"
+               placeholder="S3 Access Key" value="OJ4yvAX34e2nqoNK">
+            <input type="text" class="form-control" id="secret_key"
+               placeholder="S3 Secret Key" value="ISBCpuMYaEBYLRs6">
+            <input type="text" class="form-control" id="google_sheet_url"
+               placeholder="Google Spreadsheet URL">
+            <button type="submit" class="btn btn-success btn-block" id="btn_archive">Archive</button>
+        </div>
+    </body>
+    <script>
+        function getCookie(name)
+        {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $.ajaxSetup({
+             beforeSend: function(xhr, settings) {
+                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                     xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                 }
+             }
+        });
+
+        $("#btn_archive").click(function(){
+            $('.status').html('Processing...');
+            $('.status').show();
+
+            $.ajax({
+                url: "/archive/",
+                method: "POST",
+                data: {
+                        "access_key" : $("#access_key").val(),
+                        "secret_key" : $("#secret_key").val(),
+                        "google_sheet_url" : $("#google_sheet_url").val()
+                },
+                success: function(res){
+                    console.log(res);
+                    if (res.success) {
+                        $('.status').html('Done');
+                    } else {
+                        $('.status').html('Failed: ' + res.message);
+                    }
+                }
+            });
+        });
+    </script>
+</html>
