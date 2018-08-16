@@ -30,7 +30,7 @@
             <input type="text" class="form-control" id="secret_key"
                placeholder="S3 Secret Key" value="ISBCpuMYaEBYLRs6">
             <input type="text" class="form-control" id="google_sheet_url"
-               placeholder="Google Spreadsheet URL">
+               placeholder="Google Spreadsheet URL" value="https://docs.google.com/spreadsheets/d/1g5TkcG7EqtfgWGJMDno3J7QFRsEH0QGJSOI4vgZ-NNE/edit#gid=0">
             <button type="submit" class="btn btn-success btn-block" id="btn_archive">Archive</button>
         </div>
     </body>
@@ -76,11 +76,24 @@
                     console.log(res);
                     if (res.success) {
                         $('.status').html('Done');
+
+                        setInterval(function(){
+                            $.ajax({
+                                url: "/get_progress",
+                                method: "GET",
+                                data: {job: res.job},
+                                success: function(resp) {
+                                    console.log(resp)
+                                }
+                            });
+                        }, 1000);
                     } else {
                         $('.status').html('Failed: ' + res.message);
                     }
                 }
             });
         });
+
+
     </script>
 </html>

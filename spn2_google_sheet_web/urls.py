@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^archive/', views.archive),
+    url(r'^get_progress$', views.get_progress, name='get_progress')
 ]
