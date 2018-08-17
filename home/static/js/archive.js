@@ -52,6 +52,7 @@ window.onload = function() {
                                     $(".progress").asProgress("go", "100%");
                                     $('.progress-status').html('Done');
                                     $('.progress-url').html("");
+				    timer.clearInterval();
                                 } else {
                                     $(".progress").asProgress("go", res.current + "%");
                                     $('.progress-status').html('Processing');

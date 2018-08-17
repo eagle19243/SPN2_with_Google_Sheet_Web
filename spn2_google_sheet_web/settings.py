@@ -25,7 +25,7 @@ SECRET_KEY = 'hmm)pcok-le&ndxuacn)wkc97moreo8rqg$ua9j=sj+e=mpq4d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['spn2-with-google-sheet.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['anton-dev.us.archive.org', '127.0.0.1', 'localhost']
 
 
 # Application definition
