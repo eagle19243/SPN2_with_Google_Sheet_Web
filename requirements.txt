@@ -42,6 +42,5 @@ tldextract==2.2.0
 twitter==1.18.0
 urllib3==1.22
 warctools==4.10.0
-wbex-client==0.1.5
 webencodings==0.5
 Werkzeug==0.14.1
