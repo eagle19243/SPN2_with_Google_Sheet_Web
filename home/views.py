@@ -3,14 +3,11 @@ import re
 import json
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from oauth2client import client
 from celery.result import AsyncResult
 from home.tasks import process_doc
 
-SPN_URL = 'http://vbanos-dev.us.archive.org:8092/save/'
-AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
 CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
@@ -70,6 +67,6 @@ def get_auth_uri():
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      REDIRECT_URI_DEV)
+                                      REDIRECT_URI_PROD)
     auth_uri = flow.step1_get_authorize_url()
     return auth_uri
