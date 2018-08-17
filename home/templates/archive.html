@@ -7,24 +7,33 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SPN2 Google Sheet - Web</title>
+        <!-- Stylesheets -->
         <link rel="stylesheet" href='{% static "assets/global/css/bootstrap.min.css" %}'>
         <link rel="stylesheet" href='{% static "assets/global/css/bootstrap-extend.min.css" %}'>
+        <link rel="stylesheet" href='{% static "assets/css/site.min.css" %}'>
         <link rel="stylesheet" href='{% static "css/style.css" %}'>
-        <script src='{% static "assets/global/vendor/jquery/jquery.min.js" %}'></script>
-        <script src='{% static "assets/global/vendor/bootstrap/bootstrap.min.js" %}'></script>
     </head>
     <body>
+        <p class="description">
+            You need to be authorized with
+            <code>S3 Access Key</code>
+            and
+            <code>S3 Secret Key</code>
+            to archive URLs from Google Spreadsheet.
+            You can get the keys
+            <a href="https://archive.org/account/s3.php" target="_blank">here</a>
+        </p>
         <div class="container">
-            <p class="description">
-                You need to be authorized with
-                <code>S3 Access Key</code>
-                and
-                <code>S3 Secret Key</code>
-                to archive URLs from Google Spreadsheet.
-                You can get the keys
-                <a href="https://archive.org/account/s3.php" target="_blank">here</a>
-            </p>
-            <p class="status"></p>
+            <div class="progress-container">
+                <p class="progress-status"></p>
+                <p class="progress-url"></p>
+
+                <div class="progress" data-plugin="progress">
+                    <div class="progress-bar progress-bar-striped active" aria-valuemin="0"
+                         aria-valuemax="100" aria-valuenow="0" role="progressbar">
+                    </div>
+                </div>
+            </div>
             <input type="text" class="form-control" id="access_key"
                placeholder="S3 Access Key" value="OJ4yvAX34e2nqoNK">
             <input type="text" class="form-control" id="secret_key"
@@ -34,66 +43,19 @@
             <button type="submit" class="btn btn-success btn-block" id="btn_archive">Archive</button>
         </div>
     </body>
+    <!-- Scripts -->
+    <script src='{% static "assets/global/vendor/jquery/jquery.min.js" %}'></script>
+    <script src='{% static "assets/global/vendor/bootstrap/bootstrap.min.js" %}'></script>
+    <script src='{% static "assets/global/vendor/asprogress/jquery-asProgress.min.js" %}'></script>
+
+    <script src='{% static "assets/global/js/core.min.js" %}'></script>
+    <script src='{% static "assets/js/site.min.js" %}'></script>
+    <script src='{% static "assets/js/sections/menu.js" %}'></script>
+    <script src='{% static "assets/global/js/configs/config-colors.min.js" %}'></script>
+    <script src='{% static "assets/js/configs/config-tour.min.js" %}'></script>
+    <script src='{% static "assets/global/js/components/asprogress.min.js" %}'></script>
     <script>
-        function getCookie(name)
-        {
-            var cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-
-        $.ajaxSetup({
-             beforeSend: function(xhr, settings) {
-                 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                     xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                 }
-             }
-        });
-
-        $("#btn_archive").click(function(){
-            $('.status').html('Processing...');
-            $('.status').show();
-
-            $.ajax({
-                url: "/archive/",
-                method: "POST",
-                data: {
-                        "access_key" : $("#access_key").val(),
-                        "secret_key" : $("#secret_key").val(),
-                        "google_sheet_url" : $("#google_sheet_url").val()
-                },
-                success: function(res){
-                    console.log(res);
-                    if (res.success) {
-                        $('.status').html('Done');
-
-                        setInterval(function(){
-                            $.ajax({
-                                url: "/get_progress",
-                                method: "GET",
-                                data: {job: res.job},
-                                success: function(resp) {
-                                    console.log(resp)
-                                }
-                            });
-                        }, 1000);
-                    } else {
-                        $('.status').html('Failed: ' + res.message);
-                    }
-                }
-            });
-        });
-
-
+        Site.run();
     </script>
+    <script src='{% static "js/archive.js" %}'></script>
 </html>

@@ -37,8 +37,7 @@ def archive(request):
                 'authorization': 'LOW %s:%s' % (s3_access_key, s3_secret_key)
             })
 
-            return HttpResponseRedirect(reverse('get_progress') + '?job=' + job.id)
-            # return JsonResponse({'success': True, 'job': job.id})
+            return JsonResponse({'success': True, 'job': job.id})
 
     else:
         if 'code' in request.GET:

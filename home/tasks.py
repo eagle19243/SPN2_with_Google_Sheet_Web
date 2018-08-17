@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 import re
 import requests
 import time
-from apiclient.discovery import build
+from apiclient import discovery
 from httplib2 import Http
 from oauth2client import client
 from celery import task, current_task, shared_task
@@ -17,53 +17,53 @@ REDIRECT_URI_PROD = 'http://anton-dev.us.archive.org:8092/archive'
 
 @task
 def process_doc(spreadsheet_id, auth_code, headers):
-    print('process_doc')
+    flow = client.OAuth2WebServerFlow(CLIENT_ID,
+                                      CLIENT_SECRET,
+                                      SCOPES,
+                                      REDIRECT_URI_DEV)
+    creds = flow.step2_exchange(auth_code)
+    service = discovery.build('sheets', 'v4', http=creds.authorize(Http()), cache_discovery=False)
 
-    for i in range(100):
-        time.sleep(0.1)
-        print(i)
-        task.update_state(state='PROGRESS',
-                                  meta={'current': i, 'total': 100})
+    spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+    sheets = [s['properties']['title'] for s in spreadsheet['sheets']]
 
-    # flow = client.OAuth2WebServerFlow(CLIENT_ID,
-    #                                   CLIENT_SECRET,
-    #                                   SCOPES,
-    #                                   REDIRECT_URI_DEV)
-    # creds = flow.step2_exchange(auth_code)
-    # service = build('sheets', 'v4', http=creds.authorize(Http()))
-    #
-    # spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    # sheets = [s['properties']['title'] for s in spreadsheet['sheets']]
-    #
-    # for sheet in sheets:
-    #     result = service.spreadsheets().values().get(
-    #         spreadsheetId=spreadsheet_id,
-    #         range=sheet + '!A3:A1000').execute()
-    #     values = result.get('values', [])
-    #
-    #     if not values:
-    #         print('No data found in ', sheet)
-    #     else:
-    #         row_index = 2
-    #         for value in values:
-    #             row_index = row_index + 1
-    #             url = value[0]
+    for sheet in sheets:
+        result = service.spreadsheets().values().get(
+            spreadsheetId=spreadsheet_id,
+            range=sheet + '!A3:A1000').execute()
+        values = result.get('values', [])
 
-                # if not is_valid_url(url):
-                #     continue
-                #
-                # availability = check_availability(url, headers)
-                # job_id = request_capture(url, headers)
-                #
-                # if not job_id:
-                #     continue
-                #
-                # (status, captured_url) = request_capture_status(job_id, headers)
-                #
-                # update_values(service,
-                #               spreadsheet_id,
-                #               sheet + '!B' + str(row_index) + ':D'+ str(row_index),
-                #               [availability, status, captured_url])
+        if not values:
+            print('No data found in ', sheet)
+        else:
+            row_index = 2
+            for value in values:
+                row_index = row_index + 1
+                url = value[0]
+
+                print(url)
+                current_task.update_state(state='PROGRESS',
+                                          meta={
+                                              'current': (row_index - 2) / len(values) * 100,
+                                              'total': len(values),
+                                              'url' : url
+                                          })
+
+                if not is_valid_url(url):
+                    continue
+
+                availability = check_availability(url, headers)
+                job_id = request_capture(url, headers)
+
+                if not job_id:
+                    continue
+
+                (status, captured_url) = request_capture_status(job_id, headers)
+
+                update_values(service,
+                              spreadsheet_id,
+                              sheet + '!B' + str(row_index) + ':D'+ str(row_index),
+                              [availability, status, captured_url])
 
 def update_values(service, spreadsheet_id, range, values):
     body = {
