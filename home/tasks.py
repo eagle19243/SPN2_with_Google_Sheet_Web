@@ -7,7 +7,7 @@ from httplib2 import Http
 from oauth2client import client
 from celery import task, current_task
 
-SPN_URL = 'http://vbanos-dev.us.archive.org:8092/save/'
+SPN_URL = 'https://web-beta.archive.org/save/'
 AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
 CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
