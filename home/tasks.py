@@ -20,7 +20,7 @@ def process_doc(spreadsheet_id, auth_code, headers):
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      REDIRECT_URI_DEV)
+                                      REDIRECT_URI_PROD)
     creds = flow.step2_exchange(auth_code)
     service = discovery.build('sheets', 'v4', http=creds.authorize(Http()), cache_discovery=False)
 
