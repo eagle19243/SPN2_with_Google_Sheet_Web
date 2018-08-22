@@ -46,7 +46,6 @@ def process_doc(spreadsheet_id, auth_code, headers):
 
                 availability = check_availability(url, headers)
                 job_id = request_capture(url, headers)
-                print("job_id :", job_id)
 
                 if not job_id:
                     continue
