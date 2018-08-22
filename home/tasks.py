@@ -7,7 +7,7 @@ from httplib2 import Http
 from oauth2client import client
 from celery import task, current_task
 
-SPN_URL = 'https://web-beta.archive.org/save/'
+SPN_URL = 'http://vbanos-dev.us.archive.org:8092/save/'
 AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
 CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
@@ -20,7 +20,7 @@ def process_doc(spreadsheet_id, auth_code, headers):
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      REDIRECT_URI_PROD)
+                                      REDIRECT_URI_DEV)
     creds = flow.step2_exchange(auth_code)
     service = discovery.build('sheets', 'v4', http=creds.authorize(Http()), cache_discovery=False)
 
@@ -41,19 +41,12 @@ def process_doc(spreadsheet_id, auth_code, headers):
                 row_index = row_index + 1
                 url = value[0]
 
-                print(url)
-                current_task.update_state(state='PROGRESS',
-                                          meta={
-                                              'current': (row_index - 2) / len(values) * 100,
-                                              'total': len(values),
-                                              'url' : url
-                                          })
-
                 if not is_valid_url(url):
                     continue
 
                 availability = check_availability(url, headers)
                 job_id = request_capture(url, headers)
+                print("job_id :", job_id)
 
                 if not job_id:
                     continue
@@ -64,6 +57,14 @@ def process_doc(spreadsheet_id, auth_code, headers):
                               spreadsheet_id,
                               sheet + '!B' + str(row_index) + ':D'+ str(row_index),
                               [availability, status, captured_url])
+
+                current_task.update_state(state='PROGRESS',
+                                          meta={
+                                              'percent': (row_index - 2) / len(values) * 100,
+                                              'current': row_index - 2,
+                                              'total': len(values),
+                                              'url': url
+                                          })
 
 def update_values(service, spreadsheet_id, range, values):
     body = {

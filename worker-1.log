@@ -1,0 +1,195 @@
+[2018-08-21 21:43:21,446: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-21 21:43:22,810: INFO/ForkPoolWorker-1] Failed to retrieve access token: b'{\n  "error": "invalid_grant",\n  "error_description": "Bad Request"\n}'
+[2018-08-21 21:43:22,824: ERROR/ForkPoolWorker-1] Task home.tasks.process_doc[8c2503f3-4159-44f8-b041-5f516f60d926] raised unexpected: FlowExchangeError('invalid_grantBad Request',)
+Traceback (most recent call last):
+  File "/home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/app/trace.py", line 382, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/app/trace.py", line 641, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/osboxes/Documents/Work/SPN2_with_Google_Sheet_Web/home/tasks.py", line 24, in process_doc
+    creds = flow.step2_exchange(auth_code)
+  File "/home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/oauth2client/_helpers.py", line 133, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/oauth2client/client.py", line 2089, in step2_exchange
+    raise FlowExchangeError(error_msg)
+oauth2client.client.FlowExchangeError: invalid_grantBad Request
+[2018-08-21 21:45:22,637: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-21 21:45:23,989: INFO/ForkPoolWorker-1] Received token response with no refresh_token. Consider reauthenticating with prompt='consent'.
+[2018-08-21 21:45:23,989: INFO/ForkPoolWorker-1] Successfully retrieved access token
+[2018-08-21 21:45:23,991: INFO/ForkPoolWorker-1] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+[2018-08-21 21:45:26,382: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E?alt=json
+[2018-08-21 21:45:28,275: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21A3%3AA1000?alt=json
+[2018-08-21 21:45:29,011: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/college-libraries-ontario-launch-oer-toolkit
+[2018-08-21 21:45:32,002: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:45:32,002: WARNING/ForkPoolWorker-1] 271e0dbb-d6ec-4869-a7f2-20801e172bc7
+[2018-08-21 21:45:43,031: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B3%3AD3?valueInputOption=RAW&alt=json
+[2018-08-21 21:45:43,787: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-top-hat-why-free-now-means-free
+[2018-08-21 21:45:48,776: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:45:48,776: WARNING/ForkPoolWorker-1] 5e55de2a-9538-46dc-b51d-67cb5cd001f6
+[2018-08-21 21:45:59,814: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B4%3AD4?valueInputOption=RAW&alt=json
+[2018-08-21 21:46:00,584: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/can-profit-venture-backed-company-keep-oer-free%E2%80%94and-be-financially-sustainable
+[2018-08-21 21:46:03,618: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:46:03,618: WARNING/ForkPoolWorker-1] 78fbc553-5b4b-4e8d-9493-50d55faaa990
+[2018-08-21 21:46:14,716: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B5%3AD5?valueInputOption=RAW&alt=json
+[2018-08-21 21:46:15,427: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-come-around-oer-slowly
+[2018-08-21 21:46:19,446: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:46:19,446: WARNING/ForkPoolWorker-1] 6c2112c3-0435-4581-8f1f-2b7ee97f31ad
+[2018-08-21 21:46:30,521: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B6%3AD6?valueInputOption=RAW&alt=json
+[2018-08-21 21:46:31,196: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-movement-scales
+[2018-08-21 21:46:34,233: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:46:34,233: WARNING/ForkPoolWorker-1] 775a41ff-7b88-4f07-8c07-afbe0a4d5ea3
+[2018-08-21 21:46:45,373: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B7%3AD7?valueInputOption=RAW&alt=json
+[2018-08-21 21:46:46,144: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/big-%E2%80%98open%E2%80%99-educational-resources-provider-joins-forces-microsoft
+[2018-08-21 21:46:49,178: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:46:49,178: WARNING/ForkPoolWorker-1] 8d0faff9-0921-4ea7-aee7-1bb779f695c8
+[2018-08-21 21:47:00,279: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B8%3AD8?valueInputOption=RAW&alt=json
+[2018-08-21 21:47:00,994: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/one-example-nonprofit-moving-scale-through-collaborative-network
+[2018-08-21 21:47:04,229: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:47:04,230: WARNING/ForkPoolWorker-1] 0bade794-fb6c-4379-9b9f-341ef05d979f
+[2018-08-21 21:47:15,307: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B9%3AD9?valueInputOption=RAW&alt=json
+[2018-08-21 21:47:16,723: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-pick-california-nonprofit-partner-open-educational-resources-project
+[2018-08-21 21:47:19,711: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:47:19,712: WARNING/ForkPoolWorker-1] 4b4913bf-dfeb-46b6-9ff9-b9edffb587d8
+[2018-08-21 21:47:30,791: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B10%3AD10?valueInputOption=RAW&alt=json
+[2018-08-21 21:47:31,498: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/growing-goopen-us-department-education-announces-new-partner-and-plans-expand-goop
+[2018-08-21 21:47:37,179: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:47:37,180: WARNING/ForkPoolWorker-1] 136d83b1-0743-4031-af69-8fe3ccb6c9ad
+[2018-08-21 21:47:48,300: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
+[2018-08-21 21:47:48,843: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/growing-goopen-us-department-education-announces-new-partner-and-plans-expand-goop
+[2018-08-21 21:47:52,029: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:47:52,030: WARNING/ForkPoolWorker-1] 7943f8f8-ac2a-4f2d-8d6d-e411a9a15a3c
+[2018-08-21 21:48:03,202: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B12%3AD12?valueInputOption=RAW&alt=json
+[2018-08-21 21:48:03,924: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/new-framework-offers-way-validate-oer-commitment
+[2018-08-21 21:48:07,171: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:48:07,172: WARNING/ForkPoolWorker-1] 06398679-a497-46c2-b9aa-482f6579cf28
+[2018-08-21 21:48:18,282: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B13%3AD13?valueInputOption=RAW&alt=json
+[2018-08-21 21:48:18,791: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/guide-good-oer-stewardship
+[2018-08-21 21:48:22,081: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:48:22,082: WARNING/ForkPoolWorker-1] 129987f5-f218-431f-aaae-6b94d372c1c9
+[2018-08-21 21:48:33,145: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B14%3AD14?valueInputOption=RAW&alt=json
+[2018-08-21 21:48:33,843: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/rising-cost-textbooks-feverish%E2%80%93student-pirgs-say-open-educational-resources-has-cu
+[2018-08-21 21:48:36,898: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:48:36,898: WARNING/ForkPoolWorker-1] 136d864b-655a-4cd9-ba0a-82597c921d47
+[2018-08-21 21:48:47,971: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/1TwEZrCgPPbLxgp80qeXKP0tnJ8l7UuL34zNTvi3ns2E/values/Sheet1%21B15%3AD15?valueInputOption=RAW&alt=json
+[2018-08-21 21:48:48,674: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/oer-reaches-%E2%80%98inflection-point%E2%80%99-and-states-are-leading-charge
+[2018-08-21 21:48:51,953: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-21 21:48:51,953: WARNING/ForkPoolWorker-1] 8e3a5728-adc2-4336-95a4-8a0e73f7f355
+[2018-08-22 06:53:14,125: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-22 06:53:15,468: INFO/ForkPoolWorker-1] Received token response with no refresh_token. Consider reauthenticating with prompt='consent'.
+[2018-08-22 06:53:15,469: INFO/ForkPoolWorker-1] Successfully retrieved access token
+[2018-08-22 06:53:15,475: INFO/ForkPoolWorker-1] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+[2018-08-22 06:53:17,301: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso?alt=json
+[2018-08-22 06:53:18,899: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21A3%3AA1000?alt=json
+[2018-08-22 06:53:19,289: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/college-libraries-ontario-launch-oer-toolkit
+[2018-08-22 06:53:26,965: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:53:26,965: WARNING/ForkPoolWorker-1] 98ae3446-b8fe-4900-8e1b-757f1ce92639
+[2018-08-22 06:53:37,869: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B3%3AD3?valueInputOption=RAW&alt=json
+[2018-08-22 06:53:38,435: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-top-hat-why-free-now-means-free
+[2018-08-22 06:53:40,546: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:53:40,546: WARNING/ForkPoolWorker-1] 69372f51-1be4-4fbb-9c98-623a6b8e1f3c
+[2018-08-22 06:53:51,244: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B4%3AD4?valueInputOption=RAW&alt=json
+[2018-08-22 06:53:51,615: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/can-profit-venture-backed-company-keep-oer-free%E2%80%94and-be-financially-sustainable
+[2018-08-22 06:53:53,469: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:53:53,469: WARNING/ForkPoolWorker-1] 832642df-bf5d-4798-b412-be6bac3d0fca
+[2018-08-22 06:54:04,300: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B5%3AD5?valueInputOption=RAW&alt=json
+[2018-08-22 06:54:04,720: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-come-around-oer-slowly
+[2018-08-22 06:54:06,747: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:54:06,747: WARNING/ForkPoolWorker-1] 0bb6ff22-6637-443d-89d7-18ac4527c6b3
+[2018-08-22 06:54:17,440: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B6%3AD6?valueInputOption=RAW&alt=json
+[2018-08-22 06:54:17,827: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-movement-scales
+[2018-08-22 06:54:19,814: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:54:19,814: WARNING/ForkPoolWorker-1] e4c034fa-918b-4428-95b9-16b87f8ecb4f
+[2018-08-22 06:54:30,759: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B7%3AD7?valueInputOption=RAW&alt=json
+[2018-08-22 06:54:31,205: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/big-%E2%80%98open%E2%80%99-educational-resources-provider-joins-forces-microsoft
+[2018-08-22 06:54:33,195: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:54:33,195: WARNING/ForkPoolWorker-1] 699201b4-7315-40f7-bc25-1165c6a9a17d
+[2018-08-22 06:54:44,058: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B8%3AD8?valueInputOption=RAW&alt=json
+[2018-08-22 06:54:44,566: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/one-example-nonprofit-moving-scale-through-collaborative-network
+[2018-08-22 06:54:46,840: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:54:46,841: WARNING/ForkPoolWorker-1] f18ffed2-56f3-4f73-801c-10a1ef2d1a7b
+[2018-08-22 06:54:57,557: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B9%3AD9?valueInputOption=RAW&alt=json
+[2018-08-22 06:54:57,954: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-pick-california-nonprofit-partner-open-educational-resources-project
+[2018-08-22 06:54:59,758: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:54:59,758: WARNING/ForkPoolWorker-1] edd6b90f-6b2f-41c9-8665-15a057d8c287
+[2018-08-22 06:55:10,639: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B10%3AD10?valueInputOption=RAW&alt=json
+[2018-08-22 06:55:11,111: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/growing-goopen-us-department-education-announces-new-partner-and-plans-expand-goop
+[2018-08-22 06:55:13,950: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 06:55:13,950: WARNING/ForkPoolWorker-1] cb6162ff-f582-4b8a-bb56-e847b8e494b0
+[2018-08-22 06:55:24,859: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
+[2018-08-22 06:55:25,322: INFO/ForkPoolWorker-1] Task home.tasks.process_doc[c8fb9fa3-f3d4-4573-8eb2-60619fcb8e1b] succeeded in 131.197193299s: None
+[2018-08-22 07:04:43,288: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-22 07:04:44,916: INFO/ForkPoolWorker-1] Successfully retrieved access token
+[2018-08-22 07:04:44,919: INFO/ForkPoolWorker-1] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+[2018-08-22 07:04:47,196: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso?alt=json
+[2018-08-22 07:04:49,108: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21A3%3AA1000?alt=json
+[2018-08-22 07:04:49,558: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/college-libraries-ontario-launch-oer-toolkit
+[2018-08-22 07:04:57,767: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:04:57,767: WARNING/ForkPoolWorker-1] 533cb7d2-f045-4f2c-8655-e21c144ab6d0
+[2018-08-22 07:05:08,475: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B3%3AD3?valueInputOption=RAW&alt=json
+[2018-08-22 07:05:09,090: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-top-hat-why-free-now-means-free
+[2018-08-22 07:05:10,957: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:05:10,957: WARNING/ForkPoolWorker-1] ddb6a325-c3e7-4c58-923f-988380e32b17
+[2018-08-22 07:05:21,674: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B4%3AD4?valueInputOption=RAW&alt=json
+[2018-08-22 07:05:21,987: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/can-profit-venture-backed-company-keep-oer-free%E2%80%94and-be-financially-sustainable
+[2018-08-22 07:05:23,845: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:05:23,845: WARNING/ForkPoolWorker-1] b23e4236-1276-4a91-95c3-2d80fe246fc3
+[2018-08-22 07:05:34,552: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B5%3AD5?valueInputOption=RAW&alt=json
+[2018-08-22 07:05:34,888: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-come-around-oer-slowly
+[2018-08-22 07:05:36,923: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:05:36,924: WARNING/ForkPoolWorker-1] 24904c44-cf08-4e18-8629-0663a161c55a
+[2018-08-22 07:05:47,776: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B6%3AD6?valueInputOption=RAW&alt=json
+[2018-08-22 07:05:48,306: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/open-educational-resources-movement-scales
+[2018-08-22 07:05:50,263: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:05:50,263: WARNING/ForkPoolWorker-1] 942d6837-27e6-4424-bb14-3cae4300b8d9
+[2018-08-22 07:06:01,062: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B7%3AD7?valueInputOption=RAW&alt=json
+[2018-08-22 07:06:01,500: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/big-%E2%80%98open%E2%80%99-educational-resources-provider-joins-forces-microsoft
+[2018-08-22 07:06:03,790: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:06:03,790: WARNING/ForkPoolWorker-1] ddbbc6a4-5233-423b-8aec-a26468de57db
+[2018-08-22 07:06:14,542: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B8%3AD8?valueInputOption=RAW&alt=json
+[2018-08-22 07:06:14,925: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/one-example-nonprofit-moving-scale-through-collaborative-network
+[2018-08-22 07:06:16,856: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:06:16,857: WARNING/ForkPoolWorker-1] 2cbb4d4f-d7cd-4977-a706-95a6729898dc
+[2018-08-22 07:06:27,597: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B9%3AD9?valueInputOption=RAW&alt=json
+[2018-08-22 07:06:27,992: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/feds-pick-california-nonprofit-partner-open-educational-resources-project
+[2018-08-22 07:06:29,837: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:06:29,837: WARNING/ForkPoolWorker-1] 72187bd5-2c71-40d9-b7d7-18a3c483f5af
+[2018-08-22 07:06:40,592: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B10%3AD10?valueInputOption=RAW&alt=json
+[2018-08-22 07:06:40,960: WARNING/ForkPoolWorker-1] http://iskme.org/media/in_the_news/growing-goopen-us-department-education-announces-new-partner-and-plans-expand-goop
+[2018-08-22 07:06:43,427: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:06:43,428: WARNING/ForkPoolWorker-1] 237c25dc-ef06-426f-91a4-adfa7af959d7
+[2018-08-22 07:06:54,180: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
+[2018-08-22 07:06:54,559: INFO/ForkPoolWorker-1] Task home.tasks.process_doc[a34dad74-aea5-4027-810c-2c3d05b3c95b] succeeded in 131.2714332419996s: None
+[2018-08-22 07:11:50,528: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-22 07:11:51,847: INFO/ForkPoolWorker-1] Received token response with no refresh_token. Consider reauthenticating with prompt='consent'.
+[2018-08-22 07:11:51,848: INFO/ForkPoolWorker-1] Successfully retrieved access token
+[2018-08-22 07:11:51,854: INFO/ForkPoolWorker-1] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+[2018-08-22 07:11:53,688: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso?alt=json
+[2018-08-22 07:11:55,174: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21A3%3AA1000?alt=json
+[2018-08-22 07:11:57,618: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:11:57,618: WARNING/ForkPoolWorker-1] 75298525-4a45-468f-9e31-04e965f71f91
+[2018-08-22 07:12:08,304: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B3%3AD3?valueInputOption=RAW&alt=json
+[2018-08-22 07:12:10,989: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:12:10,990: WARNING/ForkPoolWorker-1] 99ddfb9b-96f5-4d7f-91b6-4b6bd0aee91c
+[2018-08-22 07:12:21,900: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B4%3AD4?valueInputOption=RAW&alt=json
+[2018-08-22 07:12:24,389: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:12:24,390: WARNING/ForkPoolWorker-1] 27ef7ef1-8064-456b-a7e8-e3afd0d9d353
+[2018-08-22 07:12:35,281: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B5%3AD5?valueInputOption=RAW&alt=json
+[2018-08-22 07:12:37,613: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:12:37,614: WARNING/ForkPoolWorker-1] 45a0603b-9683-40d6-bce6-12e407dcde6c
+[2018-08-22 07:12:48,312: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B6%3AD6?valueInputOption=RAW&alt=json
+[2018-08-22 07:12:51,028: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:12:51,028: WARNING/ForkPoolWorker-1] 6419076a-5f1f-4f01-9c99-59b25a321719
+[2018-08-22 07:13:01,725: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B7%3AD7?valueInputOption=RAW&alt=json
+[2018-08-22 07:13:04,316: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:13:04,316: WARNING/ForkPoolWorker-1] 92563f2f-0871-4a96-95f2-e5a3d12c71ad
+[2018-08-22 07:13:15,055: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B8%3AD8?valueInputOption=RAW&alt=json
+[2018-08-22 07:13:17,485: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:13:17,485: WARNING/ForkPoolWorker-1] 4fa27614-bbb5-4032-ae34-f906b3a0e5ee
+[2018-08-22 07:13:28,209: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B9%3AD9?valueInputOption=RAW&alt=json
+[2018-08-22 07:13:30,566: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:13:30,566: WARNING/ForkPoolWorker-1] 093b0a99-81dc-44c6-a306-64dd28988510
+[2018-08-22 07:13:42,153: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B10%3AD10?valueInputOption=RAW&alt=json
+[2018-08-22 07:13:50,035: WARNING/ForkPoolWorker-1] job_id :
+[2018-08-22 07:13:50,035: WARNING/ForkPoolWorker-1] c8438fd0-48e5-4bac-937b-bcf904ac7a7d
+[2018-08-22 07:14:00,979: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
+[2018-08-22 07:14:01,363: INFO/ForkPoolWorker-1] Task home.tasks.process_doc[70bbed29-d4dd-4b29-80bb-ac10edd839d6] succeeded in 130.83571236700027s: None

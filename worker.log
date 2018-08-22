@@ -1,0 +1,105 @@
+[2018-08-21 21:43:20,390: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-21 21:43:20,399: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-21 21:43:21,417: INFO/MainProcess] mingle: all alone
+[2018-08-21 21:43:21,438: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-21 21:43:21,438: INFO/MainProcess] worker@osboxes ready.
+[2018-08-21 21:43:21,443: INFO/MainProcess] Received task: home.tasks.process_doc[8c2503f3-4159-44f8-b041-5f516f60d926]  
+[2018-08-21 21:43:48,794: INFO/MainProcess] Received task: home.tasks.process_doc[e63f1975-20f9-4465-826b-c9e4091eb7ed]  
+[2018-08-21 21:45:22,636: INFO/MainProcess] Received task: home.tasks.process_doc[bab642c4-9296-4d16-aa8d-5048914d9bbb]  
+[2018-08-22 06:41:34,415: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds...
+
+[2018-08-22 06:41:36,422: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds...
+
+[2018-08-22 06:41:40,432: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds...
+
+[2018-08-22 06:41:46,444: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 8.00 seconds...
+
+[2018-08-22 06:41:54,455: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 10.00 seconds...
+
+[2018-08-22 06:42:04,477: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 12.00 seconds...
+
+[2018-08-22 06:42:16,500: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 14.00 seconds...
+
+[2018-08-22 06:42:30,523: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 16.00 seconds...
+
+[2018-08-22 06:42:46,549: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 18.00 seconds...
+
+[2018-08-22 06:43:04,577: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 20.00 seconds...
+
+[2018-08-22 06:43:24,611: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 22.00 seconds...
+
+[2018-08-22 06:43:46,653: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 24.00 seconds...
+
+[2018-08-22 06:44:10,694: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 26.00 seconds...
+
+[2018-08-22 06:44:36,732: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 28.00 seconds...
+
+[2018-08-22 06:45:04,779: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 30.00 seconds...
+
+[2018-08-22 06:45:34,837: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 32.00 seconds...
+
+[2018-08-22 06:49:47,427: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds...
+
+[2018-08-22 06:49:49,433: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds...
+
+[2018-08-22 06:49:53,443: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds...
+
+[2018-08-22 06:49:59,457: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 8.00 seconds...
+
+[2018-08-22 06:50:07,476: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 10.00 seconds...
+
+[2018-08-22 06:50:17,496: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 12.00 seconds...
+
+[2018-08-22 06:50:29,516: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 14.00 seconds...
+
+[2018-08-22 06:50:43,533: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 16.00 seconds...
+
+[2018-08-22 06:50:59,561: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 18.00 seconds...
+
+[2018-08-22 06:51:17,595: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 20.00 seconds...
+
+[2018-08-22 06:52:52,500: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-22 06:52:52,510: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-22 06:52:53,526: INFO/MainProcess] mingle: all alone
+[2018-08-22 06:52:53,550: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-22 06:52:53,550: INFO/MainProcess] worker@osboxes ready.
+[2018-08-22 06:53:14,123: INFO/MainProcess] Received task: home.tasks.process_doc[c8fb9fa3-f3d4-4573-8eb2-60619fcb8e1b]  
+[2018-08-22 06:59:55,633: INFO/MainProcess] Received task: home.tasks.process_doc[76eb0582-3f71-4b92-9e5d-d094b7dfb096]  
+[2018-08-22 07:04:43,287: INFO/MainProcess] Received task: home.tasks.process_doc[a34dad74-aea5-4027-810c-2c3d05b3c95b]  
+[2018-08-22 07:09:25,752: INFO/MainProcess] Received task: home.tasks.process_doc[c1498662-8401-4b3b-95a2-4f231f268cfd]  
+[2018-08-22 07:11:49,386: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-22 07:11:49,393: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-22 07:11:50,411: INFO/MainProcess] mingle: all alone
+[2018-08-22 07:11:50,439: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-22 07:11:50,440: INFO/MainProcess] worker@osboxes ready.
+[2018-08-22 07:11:50,526: INFO/MainProcess] Received task: home.tasks.process_doc[70bbed29-d4dd-4b29-80bb-ac10edd839d6]  
+[2018-08-22 07:12:18,223: INFO/MainProcess] Received task: home.tasks.process_doc[29683f37-290b-4e81-89c7-034a2062d0f9]  

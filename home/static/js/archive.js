@@ -28,7 +28,6 @@ window.onload = function() {
         $(".progress").asProgress("go", "0%");
         $(".progress").show();
         $('.progress-status').html('Processing');
-        $('.progress-status').show();
 
         $.ajax({
             url: "/archive/",
@@ -53,13 +52,10 @@ window.onload = function() {
                                     $('.progress-status').html('Done');
                                     $('.progress-url').html("");
                                     timer.clearInterval();
-                                } else {
-                                    $(".progress").asProgress("go", res.current + "%");
-                                    $('.progress-status').html('Processing');
-
-                                    if (res.url) {
-                                        $('.progress-url').html(res.url);
-                                    }
+                                } else if (res.current) {
+                                    $(".progress").asProgress("go", res.percent + "%");
+                                    $('.progress-status').html('Processed ' + res.current + ' of ' + res.total);
+                                    $('.progress-url').html(res.url);
                                 }
                             }
                         });
