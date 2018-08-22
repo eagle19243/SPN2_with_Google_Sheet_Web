@@ -12,8 +12,8 @@ AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
 CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
-REDIRECT_URI_DEV = 'http://localhost:8000/archive'
-REDIRECT_URI_PROD = 'http://anton-dev.us.archive.org:8092/archive'
+REDIRECT_URI_DEV = 'http://localhost:8092/archive/'
+REDIRECT_URI_PROD = 'http://anton-dev.us.archive.org:8092/archive/'
 
 @task
 def process_doc(spreadsheet_id, auth_code, headers):

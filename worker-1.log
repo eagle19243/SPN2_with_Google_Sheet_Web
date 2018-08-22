@@ -193,3 +193,18 @@ oauth2client.client.FlowExchangeError: invalid_grantBad Request
 [2018-08-22 07:13:50,035: WARNING/ForkPoolWorker-1] c8438fd0-48e5-4bac-937b-bcf904ac7a7d
 [2018-08-22 07:14:00,979: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
 [2018-08-22 07:14:01,363: INFO/ForkPoolWorker-1] Task home.tasks.process_doc[70bbed29-d4dd-4b29-80bb-ac10edd839d6] succeeded in 130.83571236700027s: None
+[2018-08-22 09:34:11,546: WARNING/ForkPoolWorker-1] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-22 09:34:12,888: INFO/ForkPoolWorker-1] Successfully retrieved access token
+[2018-08-22 09:34:12,891: INFO/ForkPoolWorker-1] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+[2018-08-22 09:34:14,771: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso?alt=json
+[2018-08-22 09:34:16,613: INFO/ForkPoolWorker-1] URL being requested: GET https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21A3%3AA1000?alt=json
+[2018-08-22 09:34:32,345: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B3%3AD3?valueInputOption=RAW&alt=json
+[2018-08-22 09:34:45,181: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B4%3AD4?valueInputOption=RAW&alt=json
+[2018-08-22 09:34:58,014: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B5%3AD5?valueInputOption=RAW&alt=json
+[2018-08-22 09:35:10,681: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B6%3AD6?valueInputOption=RAW&alt=json
+[2018-08-22 09:35:23,279: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B7%3AD7?valueInputOption=RAW&alt=json
+[2018-08-22 09:35:42,037: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B8%3AD8?valueInputOption=RAW&alt=json
+[2018-08-22 09:35:56,219: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B9%3AD9?valueInputOption=RAW&alt=json
+[2018-08-22 09:36:09,294: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B10%3AD10?valueInputOption=RAW&alt=json
+[2018-08-22 09:36:23,286: INFO/ForkPoolWorker-1] URL being requested: PUT https://sheets.googleapis.com/v4/spreadsheets/19wclGjGfTTeX1QktXyW7jm1kgC6dZVrSehhVR7i5Rso/values/Sheet1%21B11%3AD11?valueInputOption=RAW&alt=json
+[2018-08-22 09:36:23,950: INFO/ForkPoolWorker-1] Task home.tasks.process_doc[6af05220-4abc-44c7-b2bf-15c2d5b8b3ee] succeeded in 132.4043445669995s: None

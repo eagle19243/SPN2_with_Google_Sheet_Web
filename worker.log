@@ -103,3 +103,22 @@ Trying again in 20.00 seconds...
 [2018-08-22 07:11:50,440: INFO/MainProcess] worker@osboxes ready.
 [2018-08-22 07:11:50,526: INFO/MainProcess] Received task: home.tasks.process_doc[70bbed29-d4dd-4b29-80bb-ac10edd839d6]  
 [2018-08-22 07:12:18,223: INFO/MainProcess] Received task: home.tasks.process_doc[29683f37-290b-4e81-89c7-034a2062d0f9]  
+[2018-08-22 09:30:10,499: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-22 09:30:10,508: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-22 09:30:11,527: INFO/MainProcess] mingle: all alone
+[2018-08-22 09:30:11,556: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-22 09:30:11,557: INFO/MainProcess] worker@osboxes ready.
+[2018-08-22 09:32:23,441: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-22 09:32:23,457: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-22 09:32:24,478: INFO/MainProcess] mingle: all alone
+[2018-08-22 09:32:24,499: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-22 09:32:24,499: INFO/MainProcess] worker@osboxes ready.
+[2018-08-22 09:33:38,387: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2018-08-22 09:33:38,395: INFO/MainProcess] mingle: searching for neighbors
+[2018-08-22 09:33:39,412: INFO/MainProcess] mingle: all alone
+[2018-08-22 09:33:39,442: WARNING/MainProcess] /home/osboxes/Documents/Work/venvs/spn2_google_sheet_web/lib/python3.6/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2018-08-22 09:33:39,442: INFO/MainProcess] worker@osboxes ready.
+[2018-08-22 09:34:11,544: INFO/MainProcess] Received task: home.tasks.process_doc[6af05220-4abc-44c7-b2bf-15c2d5b8b3ee]  
