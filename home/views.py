@@ -54,6 +54,8 @@ def get_progress(request):
     job = AsyncResult(job_id)
     data = job.result or job.state
 
+    print(data)
+
     return HttpResponse(json.dumps(data))
 
 def get_spreadsheet_id_from_url(url):
