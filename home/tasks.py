@@ -5,9 +5,10 @@ import time
 from apiclient import discovery
 from httplib2 import Http
 from oauth2client import client
-from celery import task, current_task
+from celery import task, current_task, states
+from celery.exceptions import Ignore
 
-SPN_URL = 'http://vbanos-dev.us.archive.org:8092/save/'
+SPN_URL = 'https://web-beta.archive.org/save/'
 AVAILABILITY_API_URL = 'https://archive.org/wayback/available'
 CLIENT_ID = '993382127942-iakt5sui2m26t4vg0ed1g7f0kt2kch4e.apps.googleusercontent.com'
 CLIENT_SECRET = '3JrJxLpmpkN3WezmwYKF4AhL'
@@ -37,6 +38,7 @@ def process_doc(spreadsheet_id, auth_code, headers):
             print('No data found in ', sheet)
         else:
             row_index = 2
+            error_count = 0
             for value in values:
                 row_index = row_index + 1
                 url = value[0]
@@ -50,20 +52,36 @@ def process_doc(spreadsheet_id, auth_code, headers):
                 if not job_id:
                     continue
 
-                (status, captured_url) = request_capture_status(job_id, headers)
+                (status, captured_url, success) = request_capture_status(job_id, headers)
 
                 update_values(service,
                               spreadsheet_id,
                               sheet + '!B' + str(row_index) + ':D'+ str(row_index),
                               [availability, status, captured_url])
 
-                current_task.update_state(state='PROGRESS',
-                                          meta={
-                                              'percent': (row_index - 2) / len(values) * 100,
-                                              'current': row_index - 2,
-                                              'total': len(values),
-                                              'url': url
-                                          })
+                if not success:
+                    error_count = error_count + 1
+
+
+                if row_index - 2 == len(values):
+                    current_task.update_state(state='SUCCESS',
+                                              meta={
+                                                  'percent': (row_index - 2) / len(values) * 100,
+                                                  'current': row_index - 2,
+                                                  'total': len(values),
+                                                  'error': error_count,
+                                                  'url': url
+                                              })
+                    raise Ignore()
+                else:
+                    current_task.update_state(state='PROGRESS',
+                                              meta={
+                                                  'percent': (row_index - 2) / len(values) * 100,
+                                                  'current': row_index - 2,
+                                                  'total': len(values),
+                                                  'error': error_count,
+                                                  'url': url
+                                              })
 
 def update_values(service, spreadsheet_id, range, values):
     body = {
@@ -98,9 +116,9 @@ def request_capture_status(job_id, headers):
             return request_capture_status(job_id, headers)
         else:
             if 'timestamp' in data and 'original_url' in data:
-                return (data['status'], 'http://web.archive.org/web/' + data['timestamp'] + '/' + data['original_url'])
+                return (data['status'], 'http://web.archive.org/web/' + data['timestamp'] + '/' + data['original_url'], True)
             else:
-                return (data['status'], '')
+                return ('Error: ' + data['message'], '', False)
     except:
         return('Error: JSON parse', '')
 

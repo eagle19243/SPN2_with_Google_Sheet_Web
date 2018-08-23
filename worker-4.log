@@ -1,0 +1,4 @@
+[2018-08-23 16:48:46,859: WARNING/ForkPoolWorker-4] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-23 17:23:44,318: WARNING/ForkPoolWorker-4] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-23 17:38:42,008: WARNING/ForkPoolWorker-4] __init__() takes at most 4 positional arguments (5 given)
+[2018-08-23 17:50:21,275: WARNING/ForkPoolWorker-4] __init__() takes at most 4 positional arguments (5 given)

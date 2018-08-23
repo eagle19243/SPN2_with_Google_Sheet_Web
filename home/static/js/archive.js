@@ -27,7 +27,7 @@ window.onload = function() {
     $("#btn_archive").click(function() {
         $(".progress").asProgress("go", "0%");
         $(".progress").show();
-        $('.progress-status').html('Processing');
+        $('.progress-status').html('Processing...');
 
         $.ajax({
             url: "/archive/",
@@ -47,9 +47,15 @@ window.onload = function() {
                             success: function(res) {
                                 res = JSON.parse(res);
 
-                                if (res == "SUCCESS") {
-                                    $(".progress").asProgress("go", "100%");
-                                    $('.progress-status').html('Done');
+                                if (!res.current) return;
+
+                                if (res.current == res.total) {
+                                    $(".progress").asProgress("go", res.percent + "%");
+                                    $('.progress-status').html(
+                                            'Done! ' +
+                                            res.total + ' of ' + res.total +
+                                            ' processed with ' + res.error + ' errors'
+                                        );
                                     $('.progress-url').html("");
                                     clearInterval(timer);
                                 } else if (res.current) {
