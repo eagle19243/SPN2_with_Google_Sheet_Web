@@ -36,7 +36,8 @@ body {
 }
 .progress-url {
     margin-bottom: 10px;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
     text-align: center;
 }
 .progress-container {

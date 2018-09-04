@@ -4,7 +4,7 @@ import requests
 import time
 from apiclient import discovery
 from httplib2 import Http
-from oauth2client import client
+from oauth2client import client, file
 from celery import task, current_task, states
 from celery.exceptions import Ignore
 
@@ -18,20 +18,24 @@ REDIRECT_URI_PROD = 'http://anton-dev.us.archive.org:8092/archive/'
 
 @task
 def process_doc(spreadsheet_id, auth_code, headers):
-    flow = client.OAuth2WebServerFlow(CLIENT_ID,
-                                      CLIENT_SECRET,
-                                      SCOPES,
-                                      REDIRECT_URI_PROD)
-    creds = flow.step2_exchange(auth_code)
-    service = discovery.build('sheets', 'v4', http=creds.authorize(Http()), cache_discovery=False)
+    flow = client.OAuth2WebServerFlow(client_id=CLIENT_ID,
+                                      client_secret=CLIENT_SECRET,
+                                      scope=SCOPES,
+                                      redirect_uri=REDIRECT_URI_DEV,
+                                      prompt='consent',
+                                      access_type='offline')
 
+    creds = flow.step2_exchange(auth_code)
+    http = creds.authorize(Http())
+
+    service = discovery.build('sheets', 'v4', http=http, cache_discovery=False)
     spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
     sheets = [s['properties']['title'] for s in spreadsheet['sheets']]
 
     for sheet in sheets:
         result = service.spreadsheets().values().get(
             spreadsheetId=spreadsheet_id,
-            range=sheet + '!A3:A1000').execute()
+            range=sheet + '!A3:A10000').execute()
         values = result.get('values', [])
 
         if not values:
@@ -53,6 +57,10 @@ def process_doc(spreadsheet_id, auth_code, headers):
                     continue
 
                 (status, captured_url, success) = request_capture_status(job_id, headers)
+
+                if creds.access_token_expired or creds.invalid:
+                    creds.refresh(http)
+                    service = discovery.build('sheets', 'v4', http=http, cache_discovery=False)
 
                 update_values(service,
                               spreadsheet_id,
@@ -87,8 +95,10 @@ def update_values(service, spreadsheet_id, range, values):
     body = {
         'values':[values]
     }
+
     service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, valueInputOption='RAW',
-                                           range=range, body=body).execute()
+                                       range=range, body=body).execute()
+
 
 def is_valid_url(url):
     match = re.match(r'(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?', url)
@@ -120,7 +130,7 @@ def request_capture_status(job_id, headers):
             else:
                 return ('Error: ' + data['message'], '', False)
     except:
-        return('Error: JSON parse', '')
+        return('Error: JSON parse', '', False)
 
 def check_availability(url, headers):
     response = requests.get(url=AVAILABILITY_API_URL + '?url=' + url, headers=headers)

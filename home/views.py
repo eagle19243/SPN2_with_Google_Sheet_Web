@@ -69,6 +69,8 @@ def get_auth_uri():
     flow = client.OAuth2WebServerFlow(CLIENT_ID,
                                       CLIENT_SECRET,
                                       SCOPES,
-                                      REDIRECT_URI_PROD)
+                                      REDIRECT_URI_DEV,
+                                      prompt='consent',
+                                      access_type='offline')
     auth_uri = flow.step1_get_authorize_url()
     return auth_uri
