@@ -21,7 +21,7 @@ def process_doc(spreadsheet_id, auth_code, headers):
     flow = client.OAuth2WebServerFlow(client_id=CLIENT_ID,
                                       client_secret=CLIENT_SECRET,
                                       scope=SCOPES,
-                                      redirect_uri=REDIRECT_URI_DEV,
+                                      redirect_uri=REDIRECT_URI_PROD,
                                       prompt='consent',
                                       access_type='offline')
 
