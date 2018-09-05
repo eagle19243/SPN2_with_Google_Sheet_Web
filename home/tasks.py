@@ -65,13 +65,13 @@ def process_doc(spreadsheet_id, auth_code, headers):
                     continue
 
                 availability = check_availability(url, headers)
-                job_id = request_capture(url, headers)
+                (job_id, res_content) = request_capture(url, headers)
 
                 if not job_id:
                     update_values(service,
                                   spreadsheet_id,
                                   sheet + '!B' + str(row_index) + ':D' + str(row_index),
-                                  [availability, 'Error: Server does not response in time', ''])
+                                  [availability, res_content, ''])
                     error_count = error_count + 1
                     update_state(row_index, values, error_count, url)
                     continue
@@ -127,9 +127,9 @@ def request_capture(url, headers):
 
     try:
         data = response.json()
-        return data['job_id']
+        return (data['job_id'], data)
     except:
-        return None
+        return (None, str(response.content))
 
 def request_capture_status(job_id, headers):
     time.sleep(10)
@@ -148,7 +148,7 @@ def request_capture_status(job_id, headers):
             else:
                 return ('Error: ' + data['message'], '', False)
     except:
-        return('Error: JSON parse', '', False)
+        return (str(response.content), '', False)
 
 def check_availability(url, headers):
     response = requests.get(url=AVAILABILITY_API_URL + '?url=' + url, headers=headers)
