@@ -45,22 +45,38 @@ def process_doc(spreadsheet_id, auth_code, headers):
             error_count = 0
             for value in values:
                 row_index = row_index + 1
+
+                if len(value) == 0:
+                    continue
+
                 url = value[0]
 
+                if creds.access_token_expired or creds.invalid:
+                    creds.refresh(http)
+                    service = discovery.build('sheets', 'v4', http=http, cache_discovery=False)
+
                 if not is_valid_url(url):
+                    update_values(service,
+                                  spreadsheet_id,
+                                  sheet + '!B' + str(row_index) + ':D' + str(row_index),
+                                  ['', 'Error: Invalid URL', ''])
+                    error_count = error_count + 1
+                    update_state(row_index, values, error_count, url)
                     continue
 
                 availability = check_availability(url, headers)
                 job_id = request_capture(url, headers)
 
                 if not job_id:
+                    update_values(service,
+                                  spreadsheet_id,
+                                  sheet + '!B' + str(row_index) + ':D' + str(row_index),
+                                  [availability, 'Error: Server does not response in time', ''])
+                    error_count = error_count + 1
+                    update_state(row_index, values, error_count, url)
                     continue
 
                 (status, captured_url, success) = request_capture_status(job_id, headers)
-
-                if creds.access_token_expired or creds.invalid:
-                    creds.refresh(http)
-                    service = discovery.build('sheets', 'v4', http=http, cache_discovery=False)
 
                 update_values(service,
                               spreadsheet_id,
@@ -70,26 +86,8 @@ def process_doc(spreadsheet_id, auth_code, headers):
                 if not success:
                     error_count = error_count + 1
 
+                update_state(row_index, values, error_count, url)
 
-                if row_index - 2 == len(values):
-                    current_task.update_state(state='SUCCESS',
-                                              meta={
-                                                  'percent': (row_index - 2) / len(values) * 100,
-                                                  'current': row_index - 2,
-                                                  'total': len(values),
-                                                  'error': error_count,
-                                                  'url': url
-                                              })
-                    raise Ignore()
-                else:
-                    current_task.update_state(state='PROGRESS',
-                                              meta={
-                                                  'percent': (row_index - 2) / len(values) * 100,
-                                                  'current': row_index - 2,
-                                                  'total': len(values),
-                                                  'error': error_count,
-                                                  'url': url
-                                              })
 
 def update_values(service, spreadsheet_id, range, values):
     body = {
@@ -99,6 +97,26 @@ def update_values(service, spreadsheet_id, range, values):
     service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, valueInputOption='RAW',
                                        range=range, body=body).execute()
 
+def update_state(row_index, values, error_count, url):
+    if row_index - 2 == len(values):
+        current_task.update_state(state='SUCCESS',
+                                  meta={
+                                      'percent': (row_index - 2) / len(values) * 100,
+                                      'current': row_index - 2,
+                                      'total': len(values),
+                                      'error': error_count,
+                                      'url': url
+                                  })
+        raise Ignore()
+    else:
+        current_task.update_state(state='PROGRESS',
+                                  meta={
+                                      'percent': (row_index - 2) / len(values) * 100,
+                                      'current': row_index - 2,
+                                      'total': len(values),
+                                      'error': error_count,
+                                      'url': url
+                                  })
 
 def is_valid_url(url):
     match = re.match(r'(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?', url)
