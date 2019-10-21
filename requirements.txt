@@ -39,5 +39,5 @@ twitter==1.18.0
 urllib3==1.22
 warctools==4.10.0
 webencodings==0.5
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 whitenoise==4.0
